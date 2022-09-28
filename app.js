@@ -21,6 +21,7 @@ const dk = date.getMinutes();
 const city =[];
 
 const errorx=()=>{
+    input.value='';
     const timex = setTimeout(()=>{
         document.querySelector("p").innerHTML=`<div class="alert alert-danger" role="alert">Please enter a valid city</div>`
     },0);
@@ -42,6 +43,7 @@ form.addEventListener("submit",(e)=>{
     }else if(city.includes(input.value)){
         
     const time5 = setTimeout(()=>{
+        input.value='';
         document.querySelector("p").innerHTML=`<div class="alert alert-danger" role="alert">
         The same city cannot be entered again !!
       </div>`;
@@ -62,6 +64,7 @@ form.addEventListener("submit",(e)=>{
             //sayaç++;
         }
         else{
+            input.value='';
             document.querySelector("p").innerHTML=`<div class="alert alert-danger" role="alert">You can enter up to 4 cities!!</div>`
         }
         
@@ -81,10 +84,13 @@ const weaterApi = async function(){
     
     console.log(data);
     if(data.message=='city not found'){
-        input.value=``;
+        
         return errorx();
+    }else if(!input.value==''){
+        city.push(input.value);
+        input.value='';
     }
-    city.push(input.value);
+    
     console.log(city);
     const{weather,sys,main,name} = data;
     const{description,icon}=weather[0];
@@ -125,6 +131,6 @@ const weaterApi = async function(){
      </div>
      </div>
 ` + card.innerHTML;
-input.value=``;
+input.value='';
 } 
 
