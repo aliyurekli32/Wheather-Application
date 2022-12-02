@@ -1,4 +1,5 @@
-#Wheather App
+#Wheather-Application
+
 
 . With this project we used api  calls with wheather api
 . Improved Html and CSS knowledge and practice especially JS code alghoritms.
